@@ -16,20 +16,19 @@ func main() {
 
 	job1 := incrementJobFunc("job1", &r, 2)
 	job2 := incrementJobFunc("job2", &r, -1)
+	job3 := incrementJobFunc("job3", &r, 10)
 
 	w1 := workers.New(job1).ByTicker(time.Second * 2)
-	w2 := workers.New(job2).ByCronSpec("@every 1s").WithDone(func() {
-		// do something for cancel
-		// example close resources or recover
-		log.Println("Worker #2: closed")
-	})
-	w3 := workers.New(func(context.Context) { panic("test") }).ByTimer(time.Second * 2).WithDone(func() {
-		e := recover()
-		log.Println("Worker #3: recover:", e)
+	w2 := workers.New(job2).ByCronSpec("@every 1s")
+	w3 := workers.New(job3).WithDone(func() {
+		log.Println("Worker #3 was runned")
 	})
 
 	g := workers.NewGroup(context.Background())
-	g.Add(w1, w2, w3)
+	g.Add(w1, w2)
+
+	d := g.OnDemand(w3)
+	time.AfterFunc(time.Second*5, func() { d.Run() })
 
 	<-grace.ShutdownContext(context.Background()).Done()
 
