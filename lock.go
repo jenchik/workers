@@ -4,6 +4,7 @@ import (
 	"context"
 )
 
+// LockFunc is job wrapper for control exclusive execution
 type LockFunc func(context.Context, Job) Job
 
 // Locker interface

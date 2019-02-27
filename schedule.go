@@ -7,8 +7,11 @@ import (
 	"github.com/robfig/cron"
 )
 
+// ScheduleFunc is job wrapper for implement job run schedule
 type ScheduleFunc func(context.Context, Job) Job
 
+// ByTimer returns job wrapper func for run job each period duration
+// after previous run completed
 func ByTimer(period time.Duration) ScheduleFunc {
 	return func(ctx context.Context, j Job) Job {
 		return func(ctx context.Context) {
@@ -28,6 +31,7 @@ func ByTimer(period time.Duration) ScheduleFunc {
 	}
 }
 
+// ByTicker returns func which run Worker by ticker each period duration
 func ByTicker(period time.Duration) ScheduleFunc {
 	return func(ctx context.Context, j Job) Job {
 		return func(ctx context.Context) {
@@ -46,6 +50,9 @@ func ByTicker(period time.Duration) ScheduleFunc {
 	}
 }
 
+// ByCronSchedule returns job wrapper func for run job by cron schedule
+// using robfig/cron parser for parse cron spec.
+// If schedule spec not valid throw panic, shit happens.
 func ByCronSchedule(schedule string) ScheduleFunc {
 	s, err := cron.Parse(schedule)
 	if err != nil {

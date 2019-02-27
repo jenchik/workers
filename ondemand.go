@@ -5,6 +5,7 @@ type onDemand struct {
 	w *Worker
 }
 
+// Run job in group context, wrap job to lock
 func (d *onDemand) Run() error {
 	if d.w.job == nil {
 		return nil
