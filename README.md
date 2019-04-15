@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/jenchik/workers/branch/master/graph/badge.svg)](https://codecov.io/gh/jenchik/workers)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jenchik/workers?)](https://goreportcard.com/report/github.com/jenchik/workers)
 [![codebeat badge](https://codebeat.co/badges/e7cc5c65-0017-48fb-a963-832f9f7b4f07)](https://codebeat.co/projects/github-com-jenchik-workers-master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjenchik%2Fworkers.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjenchik%2Fworkers?ref=badge_shield)
 
 Package worker adding the abstraction layer around background jobs,
 allows make a job periodically, observe execution time and to control concurrent execution.
@@ -38,3 +39,7 @@ wg.Run()
 ```
 
 See more examples [here](/examples)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjenchik%2Fworkers.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjenchik%2Fworkers?ref=badge_large)
