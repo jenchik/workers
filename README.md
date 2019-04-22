@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/jenchik/workers/branch/master/graph/badge.svg)](https://codecov.io/gh/jenchik/workers)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jenchik/workers?)](https://goreportcard.com/report/github.com/jenchik/workers)
 [![codebeat badge](https://codebeat.co/badges/e7cc5c65-0017-48fb-a963-832f9f7b4f07)](https://codebeat.co/projects/github-com-jenchik-workers-master)
+[![GolangCI](https://golangci.com/badges/github.com/jenchik/workers.svg)](https://golangci.com/r/github.com/jenchik/workers)
 
 Package worker adding the abstraction layer around background jobs,
 allows make a job periodically, observe execution time and to control concurrent execution.
